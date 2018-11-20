@@ -10,14 +10,21 @@ public class Merge
             merge(elements, from, middle, to, temp);
         }
     }
-    public static void merge(int[] arr, int left, int right, int to, int[] argsc)
+    public static void merge(int[] arr, int left, int right, int to, int[] temp1)
     {
-        
+        if(arr[right]<arr[left])
+        {
+            temp1[left]=arr[right];
+            temp1[right]=arr[left];
+            arr[right]=temp1[right];
+            arr[left]=temp1[left];
+        }
+
     }
     public static void mergeSort(int[] elements)
     {
         int n = elements.length;
         int[] temp = new int[n];
-        mergeSortHelper(elements, 0, n−1, temp);
+        mergeSortHelper(elements, 0, n-1, temp);
     }
 }
