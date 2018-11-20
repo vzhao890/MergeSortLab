@@ -12,14 +12,17 @@ public class Merge
     }
     public static void merge(int[] arr, int left, int right, int to, int[] temp1)
     {
-        if(arr[right]<arr[left])
+        System.out.println(left+"--"+right+"--"+to);
+        if(arr[right]<arr[to])
         {
             temp1[left]=arr[right];
             temp1[right]=arr[left];
+            System.out.println(temp1[left]+"-"+temp1[right]);
             arr[right]=temp1[right];
             arr[left]=temp1[left];
         }
 
+        System.out.println(arr[left]+" "+arr[right]);
     }
     public static void mergeSort(int[] elements)
     {
