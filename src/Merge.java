@@ -2,6 +2,7 @@ public class Merge
 {
     private static void mergeSortHelper(int[] elements, int from, int to, int[] temp)
     {
+
         if (from < to)
         {
             int middle = (from + to) / 2;
@@ -10,19 +11,40 @@ public class Merge
             merge(elements, from, middle, to, temp);
         }
     }
-    public static void merge(int[] arr, int left, int right, int to, int[] temp1)
+    public static void merge(int[] arr, int left, int mid, int right, int[] temp)
     {
-        System.out.println(left+"--"+right+"--"+to);
-        if(arr[right]<arr[to])
+        int i = left;
+        int j= mid+1;
+        int k=left;
+        while(i<= mid&&j<=right)
         {
-            temp1[left]=arr[right];
-            temp1[right]=arr[left];
-            System.out.println(temp1[left]+"-"+temp1[right]);
-            arr[right]=temp1[right];
-            arr[left]=temp1[left];
+            if(arr[i]<arr[j])
+            {
+                temp[k]=arr[i];
+                i++;
+            }
+            else {
+                temp[k]=arr[j];
+                j++;
+            }
+            k++;
         }
-
-        System.out.println(arr[left]+" "+arr[right]);
+        while(i<=mid)
+        {
+            temp[k]=arr[i];
+            i++;
+            k++;
+        }
+        while(j<=right)
+        {
+            temp[k]=arr[j];
+            j++;
+            k++;
+        }
+        for(int m=left;m<=right;m++)
+        {
+            arr[m]=temp[m];
+        }
     }
     public static void mergeSort(int[] elements)
     {
